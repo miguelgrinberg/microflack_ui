@@ -13,6 +13,7 @@ else:
 class Config(object):
     DEBUG = False
     TESTING = False
+    NO_SOCKETIO = True if os.environ.get('NO_SOCKETIO') else False
 
 
 class DevConfig(Config):

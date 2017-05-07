@@ -15,7 +15,8 @@ Bootstrap(app)
 @app.route('/')
 def index():
     """Serve client-side application."""
-    return render_template('index.html')
+    return render_template('index.html',
+                           use_socketio=not app.config['NO_SOCKETIO'])
 
 
 if __name__ == '__main__':

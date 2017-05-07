@@ -18,8 +18,15 @@ app.PostFormView = Backbone.View.extend({
     },
 
     submit: function(args) {
-        var msg = new app.Message({source: args.message});
-        msg.save();
+        if (USE_SOCKETIO) {
+            // Send the new message to the server as a Socket.IO event. The server
+            // will in turn broadcast an update to all clients.
+            app.socket.emit('post_message', {source: args.message}, app.token.get('token'))
+        }
+        else {
+            var msg = new app.Message({source: args.message});
+            msg.save();
+        }
     },
 
     render: function() {
