@@ -3,7 +3,7 @@
 
 pushd $(dirname ${BASH_SOURCE[0]})
 export SERVICE=$(basename $PWD)
-export SERVICE_NAME=$(egrep -o "[^_]+$" <<<"$SERVICE_NAME")
+export SERVICE_NAME=$(egrep -o "[^_]+$" <<<"$SERVICE")
 export SERVICE_VERSION=$(git describe --tags)
 
 # docker does not allow to import files from external directories, so we
